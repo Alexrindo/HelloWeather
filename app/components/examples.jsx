@@ -1,10 +1,19 @@
 import React from "react";
+import {Link} from "react-router"
 
 const Examples = () => {
   	return (
   		<div>
-  		<h3>Examples</h3>
-  		<p>Welcome to Example page!</p>
+  		<h1 className="text-center page-title">Examples</h1>
+  		<p>Here are a few example locations to try out:</p>
+  		<ol>
+  			<li>
+  				<Link to="/?location=Stockholm">Stockholm</Link>
+  			</li>
+  			<li>
+  				<Link to="/?location=Copenhagen">Copenhagen</Link>
+  			</li>
+  		</ol>
   		</div>
   		)
  }

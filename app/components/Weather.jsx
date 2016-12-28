@@ -1,6 +1,7 @@
 import React from "react";
 import WeatherForm from "WeatherForm";
 import WeatherMessage from "WeatherMessage";
+import ErrorModal from "ErrorModal"
 import {getTemp} from "openWeatherMap";
 
 class Weather extends React.Component {
@@ -8,7 +9,26 @@ class Weather extends React.Component {
 		super(props);
 		
 		this.state = {
-			isLoading: false
+			isLoading: false,
+			errorMessage: undefined
+		}
+	}
+
+	componentDidMount() {
+		let location = this.props.location.query.location;
+
+		if(location && location.length > 0) {
+			this.handleSearch(location)
+			window.location.hash = "#/"
+		}
+	}
+
+	componentWillReceiveProps(nextProps) {
+		let location = nextProps.location.query.location;
+
+		if(location && location.length > 0) {
+			this.handleSearch(location)
+			window.location.hash = "#/"
 		}
 	}
 
@@ -24,27 +44,41 @@ class Weather extends React.Component {
 				temp,
 				isLoading: false
 			})
-		}, function (errorMessage) {
-			console.info(errorMessage)
-			that.setState({isLoading: false})
+		}, function (e) {
+			console.info(e)
+			that.setState({
+				isLoading: false,
+				errorMessage: e.message,
+				location: undefined,
+				temp: undefined
+			})
 		})
 	}
 
 	render() {
-			let {isLoading, temp, location} = this.state;
+			let {isLoading, temp, location, errorMessage} = this.state;
 			function renderMessage() {
 				if(isLoading) {
-					return <h3>Fetching Weather...</h3>
+					return <h3 className="text-center">Fetching Weather...</h3>
 				} else if (temp && location) {
 					return <WeatherMessage location={location} temperature={temp} />
 				}
 			}
 
+			function renderError() {
+				if(typeof errorMessage === "string") {
+					return (
+						<ErrorModal message={errorMessage}/>
+					)
+				}
+			}
+
 			return (
 		  		<div>
-			  		<h3>Weather Component</h3>
+			  		<h1 className="text-center page-title">Get Weather</h1>
 			  		<WeatherForm name="searchLocation" onSearch={this.handleSearch.bind(this)} />
 			  		{renderMessage()}
+			  		{renderError()}
 		  		</div>
   			)
 	}
