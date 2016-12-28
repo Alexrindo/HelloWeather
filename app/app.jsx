@@ -6,6 +6,10 @@ import Weather from "Weather";
 import About from "About";
 import Examples from "Examples";
 
+// Load foundation
+require('style!css!foundation-sites/dist/foundation.min.css')
+$(document).foundation();
+
 ReactDOM.render(
   <Router history={hashHistory}>
     <Route path="/" component={Main}>
@@ -14,4 +18,5 @@ ReactDOM.render(
       <IndexRoute component={Weather}/>
     </Route>
   </Router>,
-  document.getElementById('app'));
+  document.getElementById('app')
+);

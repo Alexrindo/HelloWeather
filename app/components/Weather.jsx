@@ -18,6 +18,7 @@ class Weather extends React.Component {
 		this.setState({isLoading: true})
 
 		getTemp(location).then(function (temp) {
+			console.info(location, temp, that.state.isLoading)
 			that.setState({
 				location,
 				temp,
@@ -42,7 +43,7 @@ class Weather extends React.Component {
 			return (
 		  		<div>
 			  		<h3>Weather Component</h3>
-			  		<WeatherForm onSearch={this.handleSearch.bind(this)} />
+			  		<WeatherForm name="searchLocation" onSearch={this.handleSearch.bind(this)} />
 			  		{renderMessage()}
 		  		</div>
   			)
