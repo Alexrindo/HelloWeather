@@ -1,15 +1,15 @@
-import React from 'react';
-import {Link, IndexLink} from "react-router";
+var React = require('react');
+var {Link, IndexLink} = require('react-router');
 
-const Nav = (props) => {
-    return (
+var Nav = () => {
+  return (
     <div>
       <h2>Nav Component</h2>
-      <IndexLink to="/" activeStyle={{fontWeight: "bold"}} activeClassName="active">Get weather </IndexLink>
-      <Link to="/about" activeStyle={{fontWeight: "bold"}} activeClassName="active">About</Link>
-      <Link to="/examples" activeStyle={{fontWeight: "bold"}} activeClassName="active">Examples</Link>
+      <IndexLink to="/" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Get Weather</IndexLink>
+      <Link to="/about" activeClassName="active"  activeStyle={{fontWeight: 'bold'}}>About</Link>
+      <Link to="/examples" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Examples</Link>
     </div>
-    );
-  }
+  );
+};
 
-  export default Nav;
+module.exports = Nav;

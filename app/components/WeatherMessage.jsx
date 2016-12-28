@@ -1,9 +1,9 @@
-import React from "react";
+var React = require('react');
 
-const WeatherMessage = ({temperature, location}) => {
-  	return (
-  		<h3>It is {temperature} in {location}.</h3>
-  	)
-  }
+var WeatherMessage = ({temp, location}) => {
+  return (
+    <h3>It's it {temp} in {location}.</h3>
+  )
+};
 
-export default WeatherMessage;
+module.exports = WeatherMessage;

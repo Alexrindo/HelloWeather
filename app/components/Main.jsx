@@ -1,14 +1,14 @@
-import React from 'react';
-import Nav from 'Nav';
+var React = require('react');
+var Nav = require('Nav');
 
-const Main = (props) => {
-    return (
-      <div>
-        <Nav/>
-        <h2>Main Component</h2>
-        {props.children}
-      </div>
-    );
-  }
+var Main = (props) => {
+  return (
+    <div>
+      <Nav/>
+      <h2>Main Component</h2>
+      {props.children}
+    </div>
+  );
+}
 
-export default Main;
+module.exports = Main;

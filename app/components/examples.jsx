@@ -1,12 +1,12 @@
-import React from "react";
+var React = require('react');
 
-const Examples = () => {
-  	return (
-  		<div>
-  		<h3>Examples</h3>
-  		<p>Welcome to Example page!</p>
-  		</div>
-  		)
- }
+var Examples = (props) => {
+  return (
+    <div>
+      <h3>Examples</h3>
+      <p>Welcome to examples page!</p>
+    </div>
+  )
+};
 
-export default Examples;
+module.exports = Examples;
